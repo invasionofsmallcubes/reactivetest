@@ -16,7 +16,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @SpringBootApplication
-open class ReactivetestApplication {
+open class BlockingApplication {
 
     @Bean
     open fun init(quoteRepository: QuoteRepository) = CommandLineRunner {
@@ -28,7 +28,7 @@ open class ReactivetestApplication {
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(ReactivetestApplication::class.java, *args)
+    SpringApplication.run(BlockingApplication::class.java, *args)
 }
 
 
