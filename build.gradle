@@ -14,6 +14,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
     }
 }
+
 allprojects {
     apply plugin: 'kotlin'
     repositories {
