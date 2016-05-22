@@ -1,0 +1,10 @@
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile ('org.springframework.reactive:spring-reactive:0.1.0.BUILD-SNAPSHOT')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+jar {
+    baseName = 'reactiveflow'
+    version = '0.0.1-SNAPSHOT'
+}

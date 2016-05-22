@@ -31,7 +31,6 @@ subprojects {
         compile('org.springframework.boot:spring-boot-starter-web')
         compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
 
-//    compile "org.springframework.reactive:spring-reactive:0.1.0.BUILD-SNAPSHOT"
         testCompile('org.springframework.boot:spring-boot-starter-test')
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     }

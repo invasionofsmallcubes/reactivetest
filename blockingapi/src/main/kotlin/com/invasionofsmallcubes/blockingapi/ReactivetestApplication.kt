@@ -17,12 +17,14 @@ import javax.persistence.Id
 
 @SpringBootApplication
 open class ReactivetestApplication {
+
     @Bean
     open fun init(quoteRepository: QuoteRepository) = CommandLineRunner {
         for(i in 1..2000) {
             quoteRepository.save(Quote("Test quote $i.", "Me $i"));
         }
     }
+
 }
 
 fun main(args: Array<String>) {

@@ -7,6 +7,6 @@ dependencies {
 }
 
 jar {
-    baseName = 'reactivetest'
+    baseName = 'blockingapi'
     version = '0.0.1-SNAPSHOT'
 }
