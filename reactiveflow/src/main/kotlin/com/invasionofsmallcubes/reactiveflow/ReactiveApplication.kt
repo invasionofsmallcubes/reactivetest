@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
 import reactor.core.publisher.Computations
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Flux.defer
 import reactor.core.publisher.Flux.fromIterable
-import reactor.core.test.TestSubscriber
-import java.util.stream.Collector
 import java.util.stream.Collectors
 
 @SpringBootApplication
@@ -32,9 +29,13 @@ fun main(args: Array<String>) {
 @RestController
 class ReactiveEndpoint @Autowired constructor(val quoteRepository: QuoteRepository) {
     @RequestMapping("/blocking/{identifier}")
-    fun get(@PathVariable identifier: String): MutableList<in Quote> {
-        return defer { fromIterable( quoteRepository.getAll(identifier)) }
-                .subscribeOn(Computations.concurrent()).stream().collect(Collectors.toList());
+    fun get(@PathVariable identifier: String): List<Quote> { //MutableList<in Quote> {
+        return quoteRepository.getAll(identifier)
+//        return defer { fromIterable( quoteRepository.getAll(identifier)) }
+//                .subscribeOn(Computations.concurrent())
+//                .stream()
+//                .collect(
+//                        Collectors.toList());
     }
 }
 
