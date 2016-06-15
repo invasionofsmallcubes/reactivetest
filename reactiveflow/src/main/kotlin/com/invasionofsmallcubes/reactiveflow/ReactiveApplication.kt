@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
-import reactor.core.publisher.Computations
 import reactor.core.publisher.Flux.defer
 import reactor.core.publisher.Flux.fromIterable
-import java.util.stream.Collectors
+import reactor.core.scheduler.Schedulers
 
 @SpringBootApplication
 open class ReactiveApplication {
@@ -28,14 +27,14 @@ fun main(args: Array<String>) {
 }
 @RestController
 class ReactiveEndpoint @Autowired constructor(val quoteRepository: QuoteRepository) {
+
+    val comp = Schedulers.newComputation("comp")
+
     @RequestMapping("/blocking/{identifier}")
-    fun get(@PathVariable identifier: String): List<Quote> { //MutableList<in Quote> {
-        return quoteRepository.getAll(identifier)
-//        return defer { fromIterable( quoteRepository.getAll(identifier)) }
-//                .subscribeOn(Computations.concurrent())
-//                .stream()
-//                .collect(
-//                        Collectors.toList());
+    fun get(@PathVariable identifier: String): /* List<Quote> { */ List<Quote> {
+//        return quoteRepository.getAll(identifier)
+        return defer { fromIterable( quoteRepository.getAll(identifier)) }
+                .subscribeOn(comp).collectList().block()
     }
 }
 

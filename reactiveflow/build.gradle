@@ -1,6 +1,6 @@
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('io.projectreactor:reactor-core:2.5.0.M3')
+    compile('io.projectreactor:reactor-core:2.5.0.M4')
     compile ('org.springframework.reactive:spring-reactive:0.1.0.BUILD-SNAPSHOT')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
